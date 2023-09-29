@@ -3,7 +3,7 @@ This repo is for searching professor in CS based on their work. Probably smart e
 
 ## How this is working (currently)
 
-A user inputs their keywords -> we call the search for papers with that keyword -> filter the last author id out of the search -> search for that author -> if their email contains .edu, that person is probably a professor -> return that professor information
+A user inputs their keywords -> we call the search for papers with that keyword -> filter the last author id out of the search -> search for that author -> return that author information
 
 ## How to run
 
