@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="post">
+    <input type="text" name="query" placeholder="Enter a CS topic...">
+    <input type="submit" value="Search">
+</form>
+<h2>Potential CS Professors:</h2>
+<ul>
+    {% for professor in professors %}
+        <li>{{ professor }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
