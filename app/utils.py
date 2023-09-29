@@ -1,17 +1,39 @@
 from scholarly import scholarly
+#from scholarly import ProxyGenerator
 
-def search_google_scholar(query):
+#pg = ProxyGenerator()
+#success = pg.FreeProxies()
+#scholarly.use_proxy(pg)
+
+def search_google_scholar(query, n = 10):
     search_query = scholarly.search_pubs(query)
-    papers = [next(search_query) for _ in range(20)]
     professors = []
-    for paper in papers:
+    count = 0
+    while count < n:
+        paper = next(search_query)
         authors = paper['author_id']
         if len(authors)!=0:
             last_author = authors[-1]
             if last_author != '':
                 #search that author based on the author id
                 last_author_information = scholarly.search_author_id(last_author)
-                #print(last_author_information.keys())
-                if '.edu' in last_author_information['email_domain'] and last_author_information['name'] not in professors:
-                    professors.append(last_author_information['name'])
+                if '.edu' in last_author_information['email_domain']:
+                    try:
+                        image_url = last_author_information['url_picture']
+                    except:
+                        image_url = '#'
+                    try:
+                        homepage = last_author_information['homepage']
+                    except:
+                        homepage = '#'
+                    professors.append({
+                        'name': last_author_information['name'],
+                        'affiliation':last_author_information['affiliation'],
+                        'homepage': homepage,
+                        'image_url': image_url,
+                        'interest': str(last_author_information['interests'])
+                    })
+                    count+=1
     return professors
+
+#%%

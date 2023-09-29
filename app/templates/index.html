@@ -6,9 +6,14 @@
     <input type="submit" value="Search">
 </form>
 <h2>Potential CS Professors:</h2>
-<ul>
+<div class="professors-grid">
     {% for professor in professors %}
-        <li>{{ professor }}</li>
+    <div class="professor-card">
+        <img src="{{ professor['image_url'] }}" alt="{{ professor['name'] }}" class="professor-image">
+        <h3><a href="{{ professor['homepage'] }}" target="_blank">{{ professor['name'] }}</a></h3>
+        <p>{{ professor['affiliation'] }}</p>
+        <p class="interests">Interests: {{ professor['interests'] }}</p>
+    </div>
     {% endfor %}
-</ul>
+</div>
 {% endblock %}

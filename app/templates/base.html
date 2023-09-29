@@ -2,7 +2,66 @@
 <html>
 <head>
     <title>CS Professor Search</title>
-    <!-- Add links to CSS files in static folder here, if needed -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 50px;
+            text-align: center;
+        }
+
+        form {
+            margin-bottom: 30px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 15px;
+            margin-left: 10px;
+        }
+
+        h2 {
+            margin-top: 40px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 8px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+        .professor-card {
+    ...
+    background-color: #f5f5f5;
+    padding: 20px;
+    transition: 0.3s;
+}
+
+.professor-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.professor-card a {
+    text-decoration: none;
+    color: black;
+}
+
+.professor-card p {
+    font-size: 14px;
+    color: gray;
+}
+        .professor-card p.interests {
+    font-style: italic;
+    color: #555;
+}
+    </style>
 </head>
 <body>
 
