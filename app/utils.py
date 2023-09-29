@@ -1,39 +1,10 @@
-from scholarly import scholarly
-#from scholarly import ProxyGenerator
+SEMANTIC_SCHOLAR_PAPER_API_URL = "https://api.semanticscholar.org/graph/v1/paper/search"
+SEMANTIC_SCHOLAR_AUTHOR_API_URL = "https://api.semanticscholar.org/graph/v1/author"
+CROSSREF_API_URL = "https://api.crossref.org/works"
 
-#pg = ProxyGenerator()
-#success = pg.FreeProxies()
-#scholarly.use_proxy(pg)
-
-def search_google_scholar(query, n = 10):
-    search_query = scholarly.search_pubs(query)
-    professors = []
-    count = 0
-    while count < n:
-        paper = next(search_query)
-        authors = paper['author_id']
-        if len(authors)!=0:
-            last_author = authors[-1]
-            if last_author != '':
-                #search that author based on the author id
-                last_author_information = scholarly.search_author_id(last_author)
-                if '.edu' in last_author_information['email_domain']:
-                    try:
-                        image_url = last_author_information['url_picture']
-                    except:
-                        image_url = '#'
-                    try:
-                        homepage = last_author_information['homepage']
-                    except:
-                        homepage = '#'
-                    professors.append({
-                        'name': last_author_information['name'],
-                        'affiliation':last_author_information['affiliation'],
-                        'homepage': homepage,
-                        'image_url': image_url,
-                        'interest': str(last_author_information['interests'])
-                    })
-                    count+=1
-    return professors
-
-#%%
+def is_full_name(name):
+    parts = name.split(' ')
+    # Check if the first part is a single initial (e.g., "A." or "A")
+    if len(parts[0]) <= 2 and '.' in parts[0]:
+        return False
+    return True

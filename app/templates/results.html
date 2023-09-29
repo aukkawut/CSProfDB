@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Search Results</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Search Results:</h2>
+    {% if authors %}
+    <ul class="list-group">
+        {% for result in authors %}
+        <li class="list-group-item">
+            <strong><a href="{{ result.homepage }}">{{ result.name }}</a></strong><br>
+            Affiliation: {{ result.affiliation }}<br>
+            Interests: {{ ', '.join(result.interests) }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No results found.</p>
+    {% endif %}
+    <br>
+    <a href="/" class="btn btn-secondary">Back to Search</a>
+</div>
+
+</body>
+</html>

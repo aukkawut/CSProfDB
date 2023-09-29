@@ -1,19 +1,23 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Professor Search</title>
+</head>
+<body>
 
-{% block content %}
-<form method="post">
-    <input type="text" name="query" placeholder="Enter a CS topic...">
-    <input type="submit" value="Search">
-</form>
-<h2>Potential CS Professors:</h2>
-<div class="professors-grid">
-    {% for professor in professors %}
-    <div class="professor-card">
-        <img src="{{ professor['image_url'] }}" alt="{{ professor['name'] }}" class="professor-image">
-        <h3><a href="{{ professor['homepage'] }}" target="_blank">{{ professor['name'] }}</a></h3>
-        <p>{{ professor['affiliation'] }}</p>
-        <p class="interests">Interests: {{ professor['interests'] }}</p>
-    </div>
-    {% endfor %}
+<div class="container mt-5">
+    <h1 class="text-center">Professor Search for CS Field</h1>
+    <form action="/search" method="post">
+        <div class="form-group">
+            <label for="query">Search Topic:</label>
+            <input type="text" class="form-control" id="query" name="query" placeholder="Enter topic, e.g., 'machine learning'" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
 </div>
-{% endblock %}
+
+</body>
+</html>

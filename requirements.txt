@@ -1,3 +1,4 @@
 Flask
 scholarly
-sentence-transformers
+requests
+python-dotenv
