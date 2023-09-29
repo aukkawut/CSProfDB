@@ -26,14 +26,16 @@ def search_google_scholar(query, n = 10):
                         homepage = last_author_information['homepage']
                     except:
                         homepage = '#'
-                    professors.append({
-                        'name': last_author_information['name'],
-                        'affiliation':last_author_information['affiliation'],
-                        'homepage': homepage,
-                        'image_url': image_url,
-                        'interest': str(last_author_information['interests'])
-                    })
-                    count+=1
+                    #check if the author is already in the list
+                    if last_author_information['name'] not in [x['name'] for x in professors]:
+                        professors.append({
+                            'name': last_author_information['name'],
+                            'affiliation':last_author_information['affiliation'],
+                            'homepage': homepage,
+                            'image_url': image_url,
+                            'interests': ', '.join(str(x) for x in last_author_information['interests'])
+                        })
+                        count+=1
     return professors
 
 #%%
