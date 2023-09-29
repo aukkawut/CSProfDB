@@ -61,6 +61,17 @@
     font-style: italic;
     color: #555;
 }
+.professors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* This allows 3-5 cards depending on the screen width */
+    gap: 20px;
+    justify-content: center;
+}
+
+.professor-card {
+    width: 100%; /* take the full width of the grid column */
+    ...
+}
     </style>
 </head>
 <body>
